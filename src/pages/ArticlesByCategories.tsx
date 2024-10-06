@@ -67,7 +67,7 @@ const ArticlesByCategory = () => {
 
   return (
     <Box p={4} gap={6}>
-      <Heading fontSize="xx-large" mb={4} color="brand.accentCoral">
+      <Heading fontSize="xx-large" mb={4} color="brand.accentGold">
         Articles of {title}
       </Heading>
 

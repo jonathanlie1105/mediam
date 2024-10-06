@@ -19,15 +19,15 @@ function SideContent() {
 
   return (
     <VStack align="stretch">
-      <Heading fontSize="xx-large" color="brand.accentCoral" mb={2}>
+      <Heading fontSize="xx-large" color="brand.accentGold" mb={2}>
         Categories
       </Heading>
       <Accordion allowToggle={true} allowMultiple={true}>
         {categories.map((category) => (
           <AccordionItem key={category.id}>
-            <Heading fontSize={"large"} color="brand.accentCoral" mb={2}>
+            <Heading fontSize="large" mb={2}>
               <AccordionButton
-                bg={"brand.backgroundDark"}
+                bg="brand.backgroundDark"
                 _hover={{ bg: "brand.accentGold" }}
               >
                 <Text fontSize="large" fontWeight="bold">

@@ -61,12 +61,12 @@ function ArticlesDataView({
             <Input
               placeholder="Search"
               onChange={(e) => setSearch(e.target.value)}
-              width={"auto"}
+              width="auto"
             />
           )}
           <IconButton
             onClick={toggleSearch}
-            aria-label={"search"}
+            aria-label="search"
             icon={searchMode ? <Icon as={FaTimes} /> : <Icon as={FaSearch} />}
             colorScheme="yellow"
           />

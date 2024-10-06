@@ -30,7 +30,7 @@ function MainContent() {
   return (
     <Box>
       <Box mb={8}>
-        <Heading fontSize="xx-large" mb={4} color="brand.accentCoral">
+        <Heading fontSize="xx-large" mb={4} color="brand.accentGold">
           Top Articles
         </Heading>
 
@@ -46,7 +46,7 @@ function MainContent() {
       </Box>
 
       <Box>
-        <Heading fontSize="xx-large" mb={4} color="brand.accentCoral">
+        <Heading fontSize="xx-large" mb={4} color="brand.accentGold">
           Latest Articles
         </Heading>
         <Grid
