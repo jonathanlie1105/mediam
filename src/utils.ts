@@ -1,4 +1,4 @@
-import { URL } from "./contants";
+import { URL } from "./constants";
 
 export function getArticle(id: number) {
   return fetch(`${URL}/api/v1/articles/${id}`, {

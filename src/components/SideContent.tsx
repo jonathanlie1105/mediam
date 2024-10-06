@@ -44,7 +44,9 @@ function SideContent() {
                 ))}
               </List>
               <Link
-                href={`/category/${category.id}/${category.name}`}
+                href={`/category/${category.id}/${encodeURIComponent(
+                  category.name
+                )}`}
                 color="brand.textMuted"
                 colorScheme="yellow"
               >
