@@ -1,5 +1,5 @@
 import { Grid, Spinner, Box, Heading, Button, Center } from "@chakra-ui/react";
-import { useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import ArticleCard from "../components/ArticleCard";
@@ -94,4 +94,4 @@ const ArticlesByCategory = () => {
   );
 };
 
-export default ArticlesByCategory;
+export default memo(ArticlesByCategory);
