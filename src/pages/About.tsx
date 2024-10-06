@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { memo } from "react";
 
-import ProfileImg from "../assets/profile.jpeg"; // Ensure the correct path to your image
+import ProfileImg from "../assets/profile.jpeg";
 
 function About() {
   return (

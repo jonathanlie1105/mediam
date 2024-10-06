@@ -1,6 +1,6 @@
 import { Box, Button, Heading, Text, Center } from "@chakra-ui/react";
 import { memo } from "react";
-import { Link } from "react-router-dom"; // Adjust if you use a different routing library
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (

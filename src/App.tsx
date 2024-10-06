@@ -19,7 +19,6 @@ function App() {
         <Router>
           <Header />
           <Box flex={1} maxHeight="80vh" width="100vw" pt={20} px={4}>
-            {/* Added background for better visibility */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/articles" element={<Articles />} />
