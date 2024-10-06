@@ -1,5 +1,5 @@
-import { Box, Text, Spinner } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { Box, Text, Spinner, Center } from "@chakra-ui/react";
+import { memo, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import ArticleDetail from "../components/ArticleDetail";
@@ -29,17 +29,31 @@ function ArticleDetails() {
 
   if (!article) {
     return (
-      <Box p={6} bg="brand.800" color="brand.text">
-        <Text fontSize="xl">Article not found.</Text>
+      <Box p={6} bg="brand.backgroundDark" color="brand.textLight">
+        <Text fontSize="xl" textAlign="center">
+          Article not found.
+        </Text>
       </Box>
     );
   }
 
   return (
-    <Box p={6} bg="brand.900" minHeight="100vh">
-      {loading ? <Spinner /> : <ArticleDetail article={article} />}
+    <Box
+      p={6}
+      bg="brand.backgroundDark"
+      borderRadius="lg"
+      color="brand.textLight"
+      minHeight="100vh"
+    >
+      {loading ? (
+        <Center>
+          <Spinner color="brand.accentGold" />
+        </Center>
+      ) : (
+        <ArticleDetail article={article} />
+      )}
     </Box>
   );
 }
 
-export default ArticleDetails;
+export default memo(ArticleDetails);

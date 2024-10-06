@@ -9,14 +9,28 @@ export function getArticle(id: number) {
   });
 }
 
-export function getArticles(page = 1, limit = 5) {
+export function getArticles(page = 1, limit = 5, search = "") {
   if (limit > 12) limit = 12;
-  return fetch(`${URL}/api/v1/articles?page=${page}&limit=${limit}`, {
+  let url = `${URL}/api/v1/articles?page=${page}&limit=${limit}`;
+  if (search) url += `&search=${search}`;
+  return fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
+}
+
+export function getArticlesByCategory(categoryId: number) {
+  return fetch(
+    `${URL}/api/v1/articles?page=1&limit=5&category_id=${categoryId}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 }
 
 export function getCategories() {

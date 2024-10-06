@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, Link } from "@chakra-ui/react";
+import { memo } from "react";
 
 function Header() {
   return (
     <Box
       as="nav"
-      bg="brand.700"
+      bg="brand.backgroundDark"
       py={4}
       px={8}
       boxShadow="md"
@@ -16,17 +16,35 @@ function Header() {
       zIndex={1}
     >
       <Flex justify="space-between" align="center" maxW="1200px" mx="auto">
-        <Text fontSize="2xl" color="brand.accent" fontWeight="bold">
-          HARDArticle
+        <Text
+          as={Link}
+          href="/"
+          fontSize="extraLarge"
+          color="brand.accentGold"
+          fontWeight="bold"
+        >
+          Mediam
         </Text>
         <Flex gap={6}>
-          <Link to="/" style={{ color: "brand.accent" }}>
+          <Link
+            href="/"
+            style={{ color: "brand.accentGold" }}
+            _hover={{ textDecoration: "underline" }}
+          >
             Home
           </Link>
-          <Link to="/articles" style={{ color: "brand.accent" }}>
+          <Link
+            href="/articles"
+            style={{ color: "brand.accentGold" }}
+            _hover={{ textDecoration: "underline" }}
+          >
             Articles
           </Link>
-          <Link to="/about" style={{ color: "brand.accent" }}>
+          <Link
+            href="/about"
+            style={{ color: "brand.accentGold" }}
+            _hover={{ textDecoration: "underline" }}
+          >
             About
           </Link>
         </Flex>
@@ -35,4 +53,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);

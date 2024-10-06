@@ -7,13 +7,19 @@ import {
   Text,
   Image,
 } from "@chakra-ui/react";
+import { memo } from "react";
 
 import ProfileImg from "../assets/profile.jpeg"; // Ensure the correct path to your image
 
 function About() {
   return (
-    <Box p={6} bg="brand.800" borderRadius="lg" color="brand.text">
-      <Heading fontSize="2xl" mb={4} color="brand.accent">
+    <Box
+      p={6}
+      bg="brand.backgroundDark"
+      borderRadius="lg"
+      color="brand.textLight"
+    >
+      <Heading fontSize="xx-large" mb={4} color="brand.accentGold">
         About Me!
       </Heading>
       <Center>
@@ -24,27 +30,23 @@ function About() {
           justifyContent="center"
           height="65vh"
         >
-          {/* Image Component */}
           <Image
-            src={ProfileImg} // Use the imported image variable
+            src={ProfileImg}
             alt="Profile"
             borderRadius="full"
             boxSize="300px"
             objectFit="cover"
             mb={4}
           />
-          <Text textAlign="center">
+          <Text textAlign="center" color="brand.textMuted">
             Visit my website to learn more about me!
           </Text>
           <Button
             onClick={() =>
               window.open("https://jonathanlie1105.github.io/", "_blank")
             }
-            colorScheme="brand"
+            colorScheme="yellow"
             variant="outline"
-            color="brand.text"
-            borderColor="brand.accent"
-            _hover={{ bg: "brand.accent", color: "brand.900" }}
           >
             See Jonathan's Websites
           </Button>
@@ -54,4 +56,4 @@ function About() {
   );
 }
 
-export default About;
+export default memo(About);

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 import { Category } from "../types";
-import { getCategories } from "../utils";
+import { getArticlesByCategory, getCategories } from "../utils";
 
 type Context = {
   categories: Array<Category>;
@@ -17,8 +17,18 @@ function CategoryProvider({ children }: { children: React.ReactNode }) {
     const fetchCategories = async () => {
       const response = await getCategories();
       const result = await response.json();
-      setCategories(result.data);
-      console.log(result);
+      const categories = result.data as Array<Category>;
+
+      const categoriesWithArticles = await Promise.all(
+        categories.map(async (category) => {
+          const articlesResponse = await getArticlesByCategory(category.id);
+          const articles = await articlesResponse.json();
+          return { ...category, articles: articles.data.data };
+        })
+      );
+
+      setCategories(categoriesWithArticles);
+      console.log(categoriesWithArticles);
     };
 
     fetchCategories();

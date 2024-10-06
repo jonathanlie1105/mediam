@@ -1,10 +1,5 @@
-import {
-  Text,
-  Card,
-  CardHeader,
-  CardBody,
-  useStyleConfig,
-} from "@chakra-ui/react";
+import { Text, Card, CardHeader, CardBody } from "@chakra-ui/react";
+import { memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Article } from "../types";
@@ -14,37 +9,44 @@ type ArticleCardProps = {
 };
 
 function ArticleCard({ article }: ArticleCardProps) {
-  const cardStyles = useStyleConfig("Card", { variant: "outline" });
-
   const navigate = useNavigate();
+  const handleClick = useCallback(() => {
+    navigate(`/article/${article.id}`);
+  }, [article.id, navigate]);
 
-  const handleClick = () => {
-    navigate(`/article/${article.id}`); // Navigate to the article details page
-  };
   return (
     <Card
-      sx={cardStyles}
-      bg="brand.800"
-      borderColor="brand.700"
-      borderWidth="1px"
+      bg="brand.backgroundMedium"
+      transition="transform 0.2s, box-shadow 0.2s"
       borderRadius="md"
-      p={4}
-      mb={4}
-      _hover={{ cursor: "pointer", scale: 1.5, transition: "all 0.3s ease" }}
+      _hover={{
+        cursor: "pointer",
+        transform: "scale(1.05)",
+        boxShadow: "lg",
+        bg: "brand.backgroundLight",
+      }}
       onClick={handleClick}
     >
       <CardHeader>
-        <Text fontSize="xl" fontFamily="heading" color="brand.accent">
+        <Text
+          fontSize="extraLarge"
+          fontFamily="typography.headingFont"
+          color="brand.accentGold"
+        >
           {article.title}
         </Text>
       </CardHeader>
       <CardBody>
-        <Text fontSize="md" fontFamily="body" color="brand.secondaryText">
-          {article.slug}
+        <Text
+          fontSize="medium"
+          fontFamily="typography.bodyFont"
+          color="brand.textMuted"
+        >
+          {article.id} - {article.slug}
         </Text>
       </CardBody>
     </Card>
   );
 }
 
-export default ArticleCard;
+export default memo(ArticleCard);

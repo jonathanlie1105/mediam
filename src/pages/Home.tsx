@@ -1,4 +1,6 @@
 import { Flex } from "@chakra-ui/react";
+import { memo } from "react";
+
 import MainContent from "../components/MainContent";
 import SideContent from "../components/SideContent";
 import { ArticlesProvider } from "../hooks/ArticlesProvider";
@@ -6,44 +8,42 @@ import { CategoryProvider } from "../hooks/CategoriesProvider";
 
 function Home() {
   return (
-    <Flex
-      direction={{ base: "column", md: "row" }} // Column on mobile, row on medium and larger
-      gap={4} // Space between main and side content
-      bg="brand.900"
-    >
-      {/* Main Content */}
-      <Flex
-        flex={2}
-        p={6}
-        borderRadius="lg"
-        boxShadow="lg"
-        bg="brand.800" // Slightly different background for contrast
-        color="brand.text"
-        direction="column"
-        overflowY="auto" // Enable scrolling for long content
-      >
+    <Flex direction={{ base: "column", md: "row" }} gap={4}>
+      <Container flex={4}>
         <ArticlesProvider>
           <MainContent />
         </ArticlesProvider>
-      </Flex>
+      </Container>
 
-      {/* Side Content */}
-      <Flex
-        flex={1}
-        p={6}
-        borderRadius="lg"
-        boxShadow="lg"
-        bg="brand.800"
-        color="brand.text"
-        direction="column"
-        overflowY="auto" // Enable scrolling for long content
-      >
+      <Container flex={1}>
         <CategoryProvider>
           <SideContent />
         </CategoryProvider>
-      </Flex>
+      </Container>
     </Flex>
   );
 }
 
-export default Home;
+type ContainerProps = {
+  flex: number;
+  children: React.ReactNode;
+};
+
+function Container({ children, flex }: ContainerProps) {
+  return (
+    <Flex
+      flex={flex}
+      p={6}
+      borderRadius="lg"
+      boxShadow="lg"
+      bg="brand.backgroundDark"
+      color="brand.textLight"
+      direction="column"
+      overflowY="auto"
+    >
+      {children}
+    </Flex>
+  );
+}
+
+export default memo(Home);

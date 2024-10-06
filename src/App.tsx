@@ -1,5 +1,5 @@
 import { Box, ChakraProvider } from "@chakra-ui/react";
-import { StrictMode } from "react";
+import { memo, StrictMode } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import theme from "./theme";
@@ -16,13 +16,15 @@ function App() {
       <ChakraProvider theme={theme}>
         <Router>
           <Header />
-          <Box flex={1} maxHeight="100vh" width="100vw" pt={20} pb={24} px={4}>
+          <Box flex={1} maxHeight="80vh" width="100vw" pt={20} px={4}>
+            {/* Added background for better visibility */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/articles" element={<Articles />} />
               <Route path="/about" element={<About />} />
               <Route path="/article/:id" element={<ArticleDetails />} />
             </Routes>
+            <Box minH={24} />
           </Box>
           <Footer />
         </Router>
@@ -31,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+export default memo(App);

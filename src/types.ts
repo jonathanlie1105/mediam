@@ -1,6 +1,7 @@
 export type Category = {
   id: number;
   name: string;
+  articles: Array<Article>;
   created_at: string;
   updated_at: string;
 };

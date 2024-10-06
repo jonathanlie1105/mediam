@@ -1,5 +1,6 @@
 import { Box, Heading, Text, Badge, Flex, IconButton } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Article } from "../types";
@@ -12,43 +13,40 @@ function ArticleDetail({ article }: Props) {
   const navigate = useNavigate();
 
   return (
-    <Box p={6} bg="brand.700" borderRadius="lg" color="brand.text">
-      {/* Back Button */}
+    <Box>
       <IconButton
         aria-label="Go back"
         icon={<ArrowBackIcon />}
-        onClick={() => navigate(-1)} // Navigate back
+        onClick={() => navigate(-1)}
         mb={4}
-        colorScheme="teal" // You can customize this
-        variant="outline" // You can also use "solid" or "ghost"
+        colorScheme="yellow"
+        variant="outline"
       />
 
-      {/* Article Title */}
-      <Heading fontSize="3xl" mb={4} color="brand.accent">
+      <Heading fontSize="threeXLarge" mb={4} color="brand.accentGold">
         {article.title}
       </Heading>
 
-      {/* Article Metadata */}
       <Flex mb={4}>
         {article.categories?.map((category) => (
-          <Badge key={category.id} colorScheme="teal" mr={2}>
+          <Badge key={category.id} colorScheme="yellow" mr={2}>
             {category.name}
           </Badge>
         ))}
-        <Text color="brand.secondaryText">
-          {new Date(article.created_at).toLocaleDateString()}{" "}
-          {/* Using the created_at field */}
+        <Text color="brand.textMuted">
+          {new Date(article.created_at).toLocaleDateString()}
         </Text>
       </Flex>
 
-      {/* Render HTML content */}
-      <Text
-        fontSize="lg"
-        lineHeight="1.6"
-        dangerouslySetInnerHTML={{ __html: article.content }}
-      />
+      <Flex pl={10}>
+        <Text
+          fontSize="lg"
+          lineHeight="1.6"
+          dangerouslySetInnerHTML={{ __html: article.content }}
+        />
+      </Flex>
     </Box>
   );
 }
 
-export default ArticleDetail;
+export default memo(ArticleDetail);

@@ -1,4 +1,16 @@
-import { Box, VStack, Text, Heading } from "@chakra-ui/react";
+import {
+  VStack,
+  Text,
+  Heading,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  Link,
+  List,
+  ListItem,
+} from "@chakra-ui/react";
+import { memo } from "react";
 
 import { useCategories } from "../hooks/CategoriesProvider";
 
@@ -6,33 +18,40 @@ function SideContent() {
   const { categories } = useCategories();
 
   return (
-    <VStack spacing={4} align="stretch">
-      <Heading size="lg" color="brand.accent" mb={4}>
-        Top 3 Categories
+    <VStack align="stretch">
+      <Heading fontSize="xx-large" color="brand.accentCoral" mb={2}>
+        Categories
       </Heading>
-      {categories.map((category) => (
-        <Box
-          key={category.id}
-          bg="brand.700" // Darker background for better contrast
-          p={4} // Consistent padding
-          borderRadius="md"
-          boxShadow="md"
-          color="brand.text" // Light text color for readability
-          textAlign="center"
-          transition="transform 0.2s, box-shadow 0.2s" // Added transition for hover effect
-          _hover={{
-            transform: "scale(1.05)",
-            boxShadow: "lg",
-            bg: "brand.600", // Change background on hover for visual feedback
-          }}
-        >
-          <Text fontSize="lg" fontWeight="bold">
-            {category.name}
-          </Text>
-        </Box>
-      ))}
+      <Accordion allowToggle={true} allowMultiple={true}>
+        {categories.map((category) => (
+          <AccordionItem key={category.id}>
+            <Heading fontSize={"large"} color="brand.accentCoral" mb={2}>
+              <AccordionButton
+                bg={"brand.backgroundDark"}
+                _hover={{ bg: "brand.accentGold" }}
+              >
+                <Text fontSize="large" fontWeight="bold">
+                  {category.name}
+                </Text>
+              </AccordionButton>
+            </Heading>
+            <AccordionPanel>
+              <List>
+                {category.articles.map((article) => (
+                  <ListItem key={article.id}>
+                    <Link href={`/article/${article.id}`}>{article.slug}</Link>
+                  </ListItem>
+                ))}
+              </List>
+              <Link color="brand.textMuted" colorScheme="yellow">
+                See more...
+              </Link>
+            </AccordionPanel>
+          </AccordionItem>
+        ))}
+      </Accordion>
     </VStack>
   );
 }
 
-export default SideContent;
+export default memo(SideContent);

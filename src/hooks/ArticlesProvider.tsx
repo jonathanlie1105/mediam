@@ -5,24 +5,26 @@ import { getArticles } from "../utils";
 
 type Context = {
   articles: Array<Article>;
-  meta?: Meta;
+  meta: Meta | null;
   page: number;
   limit: number;
   setPage: (page: number) => void;
   setLimit: (limit: number) => void;
+  setSearch: (search: string) => void;
 };
 
 const ArticleContext = createContext<Context | null>(null);
 
 function ArticlesProvider({ children }: { children: React.ReactNode }) {
   const [articles, setArticles] = useState<Array<Article>>([]);
-  const [meta, setMeta] = useState<Meta>();
+  const [meta, setMeta] = useState<Meta | null>(null);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(3);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const response = await getArticles(page, limit);
+      const response = await getArticles(page, limit, search);
       const result = await response.json();
       setArticles(result.data.data);
       setMeta(result.data.metadata);
@@ -30,7 +32,7 @@ function ArticlesProvider({ children }: { children: React.ReactNode }) {
     };
 
     fetchArticles();
-  }, [articles.length, limit, page]);
+  }, [limit, page, search]);
 
   useEffect(() => {
     if (limit > 12) {
@@ -43,7 +45,15 @@ function ArticlesProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <ArticleContext.Provider
-      value={{ articles, meta, page, limit, setPage, setLimit }}
+      value={{
+        articles,
+        meta,
+        page,
+        limit,
+        setPage,
+        setLimit,
+        setSearch,
+      }}
     >
       {children}
     </ArticleContext.Provider>
