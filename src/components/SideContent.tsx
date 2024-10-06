@@ -28,7 +28,7 @@ function SideContent() {
             <Heading fontSize="large" mb={2}>
               <AccordionButton
                 bg="brand.backgroundDark"
-                _hover={{ bg: "brand.accentGold" }}
+                _hover={{ bg: "brand.backgroundMedium" }}
               >
                 <Text fontSize="large" fontWeight="bold">
                   {category.name}
