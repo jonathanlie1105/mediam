@@ -9,7 +9,6 @@
 - [Usage](#usage)
 - [Routing](#routing)
 - [Technologies Used](#technologies-used)
-- [Expanding the ESLint Configuration](#expanding-the-eslint-configuration)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -70,47 +69,6 @@ The following routes are available in the application:
 - Vite
 - Chakra UI
 - React Router
-
-## Expanding the ESLint Configuration
-
-If you are developing a production application, we recommend updating the ESLint configuration to enable type-aware lint rules:
-
-1. Configure the top-level `parserOptions` property in your ESLint config:
-
-   ```js
-   export default tseslint.config({
-     languageOptions: {
-       // other options...
-       parserOptions: {
-         project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-         tsconfigRootDir: import.meta.dirname,
-       },
-     },
-   });
-   ```
-
-2. Replace `tseslint.configs.recommended` with `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`.
-3. Optionally add `...tseslint.configs.stylisticTypeChecked`.
-4. Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-   ```js
-   // eslint.config.js
-   import react from "eslint-plugin-react";
-
-   export default tseslint.config({
-     // Set the react version
-     settings: { react: { version: "18.3" } },
-     plugins: {
-       // Add the react plugin
-       react,
-     },
-     rules: {
-       // Enable its recommended rules
-       ...react.configs.recommended.rules,
-       ...react.configs["jsx-runtime"].rules,
-     },
-   });
-   ```
 
 ## Contributing
 
