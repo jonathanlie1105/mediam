@@ -41,10 +41,10 @@
 To start the application, run:
 
 ```bash
-pnpm start
+pnpm dev
 ```
 
-This will open the application in your default web browser at `http://localhost:3000`.
+This will open the application in your default web browser at `http://localhost:5173`.
 
 ## Routing
 
