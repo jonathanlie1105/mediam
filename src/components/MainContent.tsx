@@ -14,6 +14,7 @@ const settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  autoplay: true,
   adaptiveHeight: true,
 };
 
@@ -35,7 +36,7 @@ function MainContent() {
         </Heading>
 
         <Center>
-          <Box w="50%">
+          <Box w={{ base: "100%", md: "50%" }}>
             <Slider {...settings}>
               {articles.slice(0, 3).map((article) => (
                 <ArticleCard key={article.id} article={article} />

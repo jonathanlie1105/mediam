@@ -30,7 +30,7 @@ function App() {
               />
               <Route path="*" element={<NotFound />} />
             </Routes>
-            <Box minH={24} />
+            <Box minH={{ base: 40, md: 24 }} />
           </Box>
           <Footer />
         </Router>
