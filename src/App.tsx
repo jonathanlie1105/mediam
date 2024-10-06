@@ -7,8 +7,10 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Articles from "./pages/Articles";
-import ArticleDetails from "./pages/ArticleDetails";
 import About from "./pages/About";
+import ArticlesByCategories from "./pages/ArticlesByCategories";
+import ArticleDetails from "./pages/ArticleDetails";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -23,6 +25,11 @@ function App() {
               <Route path="/articles" element={<Articles />} />
               <Route path="/about" element={<About />} />
               <Route path="/article/:id" element={<ArticleDetails />} />
+              <Route
+                path="/category/:id/:title"
+                element={<ArticlesByCategories />}
+              />
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <Box minH={24} />
           </Box>

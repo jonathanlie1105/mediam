@@ -14,10 +14,15 @@ function ArticleDetails() {
   useEffect(() => {
     const fetchArticle = async () => {
       setLoading(true);
-      const response = await getArticle(Number(id));
-      const result = await response.json();
-      setArticle(result.data);
-      setLoading(false);
+      try {
+        const response = await getArticle(Number(id));
+        const result = await response.json();
+        setArticle(result.data);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchArticle();
 

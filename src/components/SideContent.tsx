@@ -43,7 +43,11 @@ function SideContent() {
                   </ListItem>
                 ))}
               </List>
-              <Link color="brand.textMuted" colorScheme="yellow">
+              <Link
+                href={`/category/${category.id}/${category.name}`}
+                color="brand.textMuted"
+                colorScheme="yellow"
+              >
                 See more...
               </Link>
             </AccordionPanel>

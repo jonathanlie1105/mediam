@@ -21,9 +21,9 @@ export function getArticles(page = 1, limit = 5, search = "") {
   });
 }
 
-export function getArticlesByCategory(categoryId: number) {
+export function getArticlesByCategory(categoryId: number, page = 1) {
   return fetch(
-    `${URL}/api/v1/articles?page=1&limit=5&category_id=${categoryId}`,
+    `${URL}/api/v1/articles?page=${page}&limit=5&category_id=${categoryId}`,
     {
       method: "GET",
       headers: {

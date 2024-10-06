@@ -1,6 +1,6 @@
 import { Box, Flex, Text, Link, Icon } from "@chakra-ui/react";
 import { memo } from "react";
-import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -28,8 +28,8 @@ function Footer() {
           <Link href="https://github.com/jonathanlie1105" isExternal>
             <Icon as={FaGithub} w={6} h={6} />
           </Link>
-          <Link href="https://wa.me/6282298721226" isExternal>
-            <Icon as={FaWhatsapp} w={6} h={6} />
+          <Link href="mailto:jonathanlie1105@gmail.com" isExternal>
+            <Icon as={FaEnvelope} w={6} h={6} />
           </Link>
           <Link href="https://linkedin.com/in/jonathanlie1105" isExternal>
             <Icon as={FaLinkedin} w={6} h={6} />

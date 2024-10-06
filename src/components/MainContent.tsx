@@ -25,8 +25,7 @@ function MainContent() {
     return () => {
       setLimit(3);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
   return (
     <Box>
